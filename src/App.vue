@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <BarChart />
+      <BarChart :dataset="dataset" v-if = "dataset.length>0"/>
   </div>
 </template>
 
@@ -12,11 +12,16 @@ export default {
   components: {
     BarChart
   },
+  data (){
+    return {
+    dataset: []
+    }
+  },
 created() {
     this.axios
       .get('data.json')
       .then(response => {
-      console.log (response.data)
+     this.dataset = response.data
       })
   }
 }

@@ -33,6 +33,10 @@ export default {
     Bar
   },
   props: {
+    dataset: {
+      type: Array,
+      default: () => []
+    },
     chartId: {
       type: String,
       default: 'bar-chart'
@@ -66,24 +70,15 @@ export default {
     return {
       chartData: {
         labels: [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'November',
-          'December'
+          'Математика',
+          'Чтение',
+          'Русский язык'
         ],
         datasets: [
           {
-            label: 'Data One',
+            label: 'Средний балл',
             backgroundColor: '#f87979',
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+            data: [0, 0, 0]
           }
         ]
       },
@@ -92,6 +87,19 @@ export default {
         maintainAspectRatio: false
       }
     }
+  },
+  created () {
+    var mathsum = 0
+    var readsum = 0
+    var writesum = 0
+    this.dataset.forEach(item => {
+        mathsum = mathsum + item["math score"]
+         readsum = readsum + item["reading score"]
+          writesum = writesum + item["writing score"]
+    })
+    this.chartData.datasets[0].data[0] = mathsum/1000
+    this.chartData.datasets[0].data[1] = readsum/1000
+    this.chartData.datasets[0].data[2] = writesum/1000
   }
 }
 </script>
