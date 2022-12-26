@@ -1,16 +1,18 @@
 <template>
   <div id="app">
       <BarChart :dataset="dataset" v-if = "dataset.length>0"/>
+      <DoughnutChart :dataset="dataset" v-if = "dataset.length>0"/>
   </div>
 </template>
 
 <script>
 import BarChart from './components/Bar.vue'
+import DoughnutChart from './components/Doughnut.vue'
 
 export default {
   name: 'App',
   components: {
-    BarChart
+    BarChart, DoughnutChart
   },
   data (){
     return {
@@ -26,4 +28,5 @@ created() {
   }
 }
 </script>
+
 
