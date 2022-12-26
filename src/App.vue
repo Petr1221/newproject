@@ -1,4 +1,4 @@
-<template> red
+<template>
   <div id="app">
       <BarChart :dataset="dataset" v-if = "dataset.length>0"/>
       <DoughnutChart :dataset="dataset" v-if = "dataset.length>0"/>
